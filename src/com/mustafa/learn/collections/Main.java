@@ -20,7 +20,9 @@ public class Main {
 //        queue.PriorityQueue();
 
         Map map = new Map();
-        map.HashMap();
+//        map.HashMap();
+//        map.LinkedHashMap();
+//        map.TreeMap();
 
     }
 
@@ -253,6 +255,7 @@ class Map {
     // get(<T> key) Anahtara karşılık gelen objeyi döndürür
     // put(<T> key, <E> value) Anahtar-değer ikilisini kaydeder.
     // key değerleri unique, value değerleri değildir.
+    // aynı key değerleri atanırsa exception verilmez, üstüne yazılır
 
     public void HashMap() {
 
@@ -278,9 +281,50 @@ class Map {
 
     public void LinkedHashMap() {
 
+        // Herhangi bir sıralama yapmaz.
+        // aynı key değerleri atanırsa exception verilmez, üstüne yazılır
+
+        LinkedHashMap ogr = new LinkedHashMap();
+        ogr.put("Ali", 90);
+        ogr.put("Ali", 30);
+        ogr.put("Veli", 80);
+        ogr.put("Ahmet", 75);
+
+        Iterator iter = ogr.entrySet().iterator();
+        while(iter.hasNext()) {
+            java.util.Map.Entry e = (java.util.Map.Entry)iter.next();
+            System.out.println(e.getKey() + " => " + e.getValue());
+        }
+
+        System.out.println("\nYeni\n");
+
+        LinkedHashMap map = new LinkedHashMap();
+        map.put(10, "Ali");
+        map.put(5, "Veli");
+        map.put(6, "Ahmet");
+
+        iter = map.entrySet().iterator();
+        while (iter.hasNext()) {
+            java.util.Map.Entry e = (java.util.Map.Entry)iter.next();
+            System.out.println(e.getKey() + " => " + e.getValue());
+        }
     }
 
     public void TreeMap() {
         // sorted ve navigetable map.
+        // otomatik sıralama yapar. int küçükten büyüğe
+        // aynı key değerleri atanırsa exception verilmez, üstüne yazılır
+
+        TreeMap ogr = new TreeMap();
+        ogr.put(10, "Ali");
+        ogr.put(10, "NBR");
+        ogr.put(5, "Veli");
+        ogr.put(6, "Ahmet");
+
+        Iterator iter = ogr.entrySet().iterator();
+        while (iter.hasNext()) {
+            java.util.Map.Entry e = (java.util.Map.Entry)iter.next();
+            System.out.println(e.getKey() + " => " + e.getValue());
+        }
     }
 }
